@@ -2,6 +2,7 @@ const marioImg = document.querySelector('.marioImg');
 const pipeImg = document.querySelector('.pipeImg');   
 const nowPoint = document.querySelector('.nowPoint span');
 const bestPoint = document.querySelector('.bestPoint span');
+const restartButton = document.querySelector('.cover button');
 
 const best = JSON.parse(localStorage.getItem('bestPoint')) || 0;
 bestPoint.innerHTML = Math.trunc(best);
@@ -14,6 +15,7 @@ const jump = (e)=>{
 }
 
 let point = 0;
+
 const loop = setInterval(()=>{
     const pipePosition = pipeImg.offsetLeft;
     const marioPosition = +window.getComputedStyle(marioImg).bottom.replace('px', ' ');
@@ -31,6 +33,9 @@ const loop = setInterval(()=>{
 
         point > best && localStorage.setItem('bestPoint', point);
 
+        document.querySelector('.cover').style.display = 'flex';
+        document.querySelector('.game-board').style.opacity = '0.5';
+
         clearInterval(loop);
     }
 
@@ -39,3 +44,4 @@ const loop = setInterval(()=>{
 },10)
 
 document.addEventListener('keydown', jump);
+restartButton.addEventListener('click', ()=>{window.location.reload()});

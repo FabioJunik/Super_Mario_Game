@@ -4,14 +4,38 @@
     box-sizing: border-box;
 }
 
-.points{
-    font-family: Arial, Helvetica, sans-serif;
+.cover {
     position: absolute;
-    font-size: 25px;
-    color: rgb(14, 50, 129);
-    top: 20px;
-    left: 50px;
+    width: 100%;
+    height: 100vh;
+    padding: 175px 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    
+    font-size: 50px;
+    transition: .2s;
+
     z-index: 100;
+}
+
+.cover button{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(60, 204, 41)  ;
+
+    transition: .2s;
+}
+
+.cover button:hover{
+    background-color: #1c1c1c;
+    color: #fff;
 }
 
 .game-board{
@@ -22,8 +46,18 @@
     background: linear-gradient(#87CEED, #E0F6FF);
     margin: 0 auto;
     overflow: hidden;
+    opacity: 1;
 }
 
+.points{
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    font-size: 25px;
+    color: rgb(14, 50, 129);
+    top: 20px;
+    left: 50px;
+    z-index: 110;
+}
 .pipeImg{
     position: absolute;
     width: 80px;
