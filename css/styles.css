@@ -5,10 +5,11 @@
 }
 
 .game-board{
-    width: 80%;
-    height: 500px;
+    width: 100%;
+    height: 100vh;
     position: relative;
-    border: 1px solid #ddd;
+    border-bottom: 30px solid rgb(23, 150, 23);
+    background: linear-gradient(#87CEED, #E0F6FF);
     margin: 0 auto;
     overflow: hidden;
 }
@@ -26,16 +27,20 @@
     bottom: 0;
 }
 
+.cloudsImg{
+    width: 550px;
+    position: absolute;
+    animation: clauds-animation 10s infinite linear;
+    
+}
+
 .jump{
     animation: jump .5s;
 }
+
 @keyframes pipe-animation {
-    from { 
-        right: -80px;
-    }
-    to{
-        right: 100%;
-    }
+    from { right: -80px;}
+    to{right: 100%;}
 }
 
 @keyframes jump {
@@ -54,4 +59,9 @@
     100% { 
         bottom: 0;
     }
+}
+
+@keyframes clauds-animation {
+    from { right: -550px;}
+    to{right: 100%;}
 }
