@@ -1,5 +1,11 @@
 const marioImg = document.querySelector('.marioImg');
 const pipeImg = document.querySelector('.pipeImg');   
+const nowPoint = document.querySelector('.nowPoint span');
+const bestPoint = document.querySelector('.bestPoint span');
+
+const best = JSON.parse(localStorage.getItem('bestPoint')) || 0;
+bestPoint.innerHTML = Math.trunc(best);
+
 
 const jump = (e)=>{
     e.code === 'Space' && marioImg.classList.add('jump');
@@ -7,6 +13,7 @@ const jump = (e)=>{
     setTimeout(()=>{marioImg.classList.remove('jump')}, 500)
 }
 
+let point = 0;
 const loop = setInterval(()=>{
     const pipePosition = pipeImg.offsetLeft;
     const marioPosition = +window.getComputedStyle(marioImg).bottom.replace('px', ' ');
@@ -22,8 +29,13 @@ const loop = setInterval(()=>{
         marioImg.style.width = '75px';
         marioImg.style.marginLeft = '50px';
 
+        point > best && localStorage.setItem('bestPoint', point);
+
         clearInterval(loop);
     }
+
+    point += 0.1;
+    nowPoint.innerText = Math.trunc(point);
 },10)
 
 document.addEventListener('keydown', jump);
